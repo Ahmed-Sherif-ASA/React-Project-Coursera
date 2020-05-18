@@ -1,14 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
-class Dishdetail extends Component {
-  constructor(props) {
-      super(props);
-      this.state = {
-      };
-    }
-  
-  
-  renderDish(dish) {
+
+
+
+  function RenderDish({dish}) {
     if (dish != null)
         return(
             <Card>
@@ -25,7 +20,7 @@ class Dishdetail extends Component {
         );
   }
 
-  renderComments(dishComment) {
+  function RenderComments({ dishComment }) {
     if (dishComment != null){
       const cmnt = dishComment.comments.map((comm) => {
         return (
@@ -53,20 +48,104 @@ class Dishdetail extends Component {
 
   }
 
-  render() {
+  const Dishdetail = (props) => {
     return(
       <div className="container">
         <div className="row">
           <div className="col-12 col-md-5 m-1">
-            {this.renderDish(this.props.dish)}
+            <RenderDish dish={props.dish}/>
           </div>
           <div className="col-12 col-md-5 m-1"> 
-              {this.renderComments(this.props.dish)}
+            <RenderComments dishComment={props.dish}/>
           </div>
         </div>
       </div>
     );
   }
-}
 
 export default Dishdetail;
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////
+// Impelemenation as Class(Representtational) Component
+////////////////////////////////////////////////////////
+
+
+// import React, { Component } from 'react';
+// import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
+
+// class Dishdetail extends Component {
+//   constructor(props) {
+//       super(props);
+//       this.state = {
+//       };
+//     }
+
+//   renderDish(dish) {
+//     if (dish != null)
+//         return(
+//             <Card>
+//                 <CardImg top src={dish.image} alt={dish.name} />
+//                 <CardBody>
+//                   <CardTitle>{dish.name}</CardTitle>
+//                   <CardText>{dish.description}</CardText>
+//                 </CardBody>
+//             </Card>
+//         );
+//     else
+//         return(
+//             <div></div>
+//         );
+//   }
+
+//   renderComments(dishComment) {
+//     if (dishComment != null){
+//       const cmnt = dishComment.comments.map((comm) => {
+//         return (
+//           <div className="row">
+//             <div key={comm.id} className="col-12 col-md m-1">
+//               <div tag="li">
+//                 <p>{comm.comment}</p>
+//                 <p>-- {comm.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comm.date)))}</p> 
+//               </div>
+//             </div>
+//           </div>
+//         );
+//       });
+//       return (
+//         <div>
+//             <h4><b>Comments</b></h4>
+//             <ul className="list-unstyled">{cmnt}</ul>
+//         </div>
+//     );   
+//       } else {
+//         return(
+//           <div></div>
+//       );
+//       }
+//   }
+
+//   render() {
+//     return(
+//       <div className="container">
+//         <div className="row">
+//           <div className="col-12 col-md-5 m-1">
+//             {this.renderDish(this.props.dish)}
+//           </div>
+//           <div className="col-12 col-md-5 m-1"> 
+//               {this.renderComments(this.props.dish)}
+//           </div>
+//         </div>
+//       </div>
+//     );
+//   }
+// }
+
+// export default Dishdetail;
