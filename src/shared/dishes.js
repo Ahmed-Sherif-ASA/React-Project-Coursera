@@ -1,8 +1,3 @@
-import Utha from './assets/images/uthappizza.png';
-import Zucchi from './assets/images/zucchipakoda.png';
-import Vadonut from './assets/images/vadonut.png';
-import ElaiCheese from './assets/images/elaicheesecake.png';
-
 export const DISHES =
     [
         {
