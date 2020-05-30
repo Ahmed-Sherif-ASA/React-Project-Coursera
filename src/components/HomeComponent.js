@@ -6,7 +6,8 @@ import { baseUrl } from '../shared/baseUrl';
 
 
 function RenderCard({item, isLoading, errMess}) {
-
+    
+    console.log('errMess: ' + errMess + '        isloading: ' + isLoading + '           item: ' + item)
     if (isLoading) {
         return(
                 <Loading />
@@ -18,6 +19,7 @@ function RenderCard({item, isLoading, errMess}) {
         );
     }
     else 
+        
         return(
             <Card>
                 <CardImg src={baseUrl + item.image} alt={item.name} />
@@ -32,14 +34,15 @@ function RenderCard({item, isLoading, errMess}) {
 }
 
 function Home(props) {
+    console.log(props)
     return(
         <div className="container">
             <div className="row align-items-start">
                 <div className="col-12 col-md m-1">
-                    <RenderCard item={props.dish} isLoading={props.dishesLoading} errMess={props.dishesErrMess}  />
+                    <RenderCard item={props.dish} isLoading={props.dishesLoading} errMess={props.dishErrMess}  />
                 </div>
                 <div className="col-12 col-md m-1">
-                    <RenderCard item={props.promotion} isLoading={props.promoLoading} errMess={props.promoErrMess} />
+                <RenderCard item={props.promotion} isLoading={props.promoLoading} errMess={props.promoErrMess} />
                 </div>
                 <div className="col-12 col-md m-1">
                     <RenderCard item={props.leader} />
