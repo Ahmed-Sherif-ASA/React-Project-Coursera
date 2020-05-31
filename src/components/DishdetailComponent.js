@@ -5,6 +5,9 @@ import  CommentForm  from './CommentFormComponent'
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
 
+
+
+
 function RenderDish({dish}) {
   if (dish != null)
       return(
@@ -22,7 +25,7 @@ function RenderDish({dish}) {
       );
 }
 
-function RenderComments({ dishComment, addComment, dishId }) {
+function RenderComments({ dishComment, postComment, dishId }) {
   if (dishComment != null){
     console.log(dishComment);
     const cmnt = dishComment.map((comm) => {
@@ -41,7 +44,7 @@ function RenderComments({ dishComment, addComment, dishId }) {
       <div>
           <h4><b>Comments</b></h4>
           <ul className="list-unstyled">{cmnt}</ul>
-          <CommentForm dishId={dishId} addComment={addComment}/>
+          <CommentForm dishId={dishId} postComment={postComment}/>
       </div>
   );   
     } else {
@@ -91,7 +94,7 @@ const Dishdetail = (props) => {
           </div>
           <div className="col-12 col-md-5 m-1"> 
             <RenderComments dishComment={props.comments}
-            addComment={props.addComment}
+            postComment={props.postComment}
             dishId={props.dish.id}
             />
           </div>
